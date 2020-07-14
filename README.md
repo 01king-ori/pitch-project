@@ -1,6 +1,6 @@
 # pitch-project
 ## Author
-Vincent Kingori Mwangi
+Vincent Kingori Mwangi.
 ## Description
 This is a simple project where it gives a user a platform to pitch their ideas in a minute.The relevance ofpitching in one minute is to help a user think fast since time is usually limited and one has to think fast
 ## Technologies used
