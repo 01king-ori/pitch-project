@@ -5,7 +5,7 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://moringa:Hellomoringa@localhost/pitch"
     UPLOAD_PHOTOS_DEST = 'app/static/photos'
-    MAIL_SERVER = 'joeljuma08@gmail.com'
+    MAIL_SERVER = 'kingorimwangi01@gmail.com'
     MAIL_PORT = ''
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")

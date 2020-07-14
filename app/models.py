@@ -50,7 +50,7 @@ class Pitch(db.Model):
 
 
     def __repr__(self):
-        returnf'{self.title}'
+        return'{self.title}'
 
 class Comment(db.Model):
     __table__='comments'
