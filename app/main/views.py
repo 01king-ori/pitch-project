@@ -5,6 +5,7 @@ from flask import render_template, request, url_for, abort, flash
 from flask_login import login_required
 from ..models import User, Pitch, Comment
 from .. import db, photos
+from werkzeug import redirect
 app = Flask(__name__)
 
 #view
@@ -15,7 +16,7 @@ def index():
     '''
     title = 'Pitch'
     pitch = Pitch.query.all()
-
+    pitchs=pitchs
     return render_template('index.html', title= title, pitchs = pitchs)
 
 @main.route("/user/<name>")
@@ -27,11 +28,11 @@ def profile(uname):
 @main.route('/user/<name>/update', methods = ['GET','POST'])
 @login_required
 def update_profile(uname):
-    user = User.query.filter_by(username = name).first()
+    user = User.query.filter_by(username = uname).first()
     if user is None:
         abort(404)
 
-    form = UpdateProfile()
+    form = update_profile()
 
     if form.validate_on_submit():
         user.bio = form.bio.data
@@ -56,7 +57,7 @@ def update_pic(uname):
 @main.route('/pitch/new', methodes=['GET','POST'])
 @login_required
 def new_pitch():
-    form = PitchForm()
+    form = new_pitch()
 
     if form.validate_on_submit():
 
@@ -78,7 +79,7 @@ def new_pitch():
 @main.route('/comment/new/<init:id>', methodes=['GET','POST'])
 @login_required
 def new_comment(id):
-    form = CommentForm()
+    form = new_comment()
 
     if form.validate_on_submit():
 
@@ -97,8 +98,8 @@ def new_comment(id):
 @login_required
 def pitch_review(id):
     pitch=Pitch.query.get_or_404(id)
-    comment= Review.query.all()
-    form=ReviewForm()
+    comment= pitch_review.query.all()
+    form=form()
 
     if request.args.get("like"):
         pitch.like = pitch.like+1
@@ -119,9 +120,9 @@ def pitch_review(id):
     if form.validate_on_submit():
         review = form.review.data
 
-        new_review = Review(id=id,review=review,user_id=current_user.id)
+        new_review = review(id=id,review=review,user_id=User.id)
 
         new_review.save_review()
         return redirect(url_for('main.pitch_review',id=id))
-    reviews = Review.query.all()
+    reviews = review.query.all()
     return render_template('pitch_review.html',comment=comment,pitch=pitch,review_form=form,reviews=reviews)
