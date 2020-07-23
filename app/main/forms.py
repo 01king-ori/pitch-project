@@ -14,3 +14,4 @@ class UpdateProfile(FlaskForm):
 class CommentForm(FlaskForm):
     comment = TextAreaField('Comment') 
     submit = SubmitField('Submit')
+.
