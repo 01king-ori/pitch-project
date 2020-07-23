@@ -16,32 +16,16 @@ class Config:
     SIMPLEMDE_USE_CDN=True
 
 class ProdConfig(Config):
-    '''
-    Production  configuration child class
-
-    Args:
-        Config: The parent configuration class with General configuration settings
-    '''
+    
     DEBUG=False
     
 
 class TestConfig(Config):
-    '''
-    Test configuration child class
-
-    Args:
-        Config: The parent configuration class with General configuration settings
-    '''
-    SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://maryann:Maryann00*@localhost/pitcher_test'
+        SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://vincent:xpsviewer*@localhost/pitcher_test'
 
 class DevConfig(Config):
-    '''
-    Development  configuration child class
-
-    Args:
-        Config: The parent configuration class with General configuration settings
-    '''
-    DEBUG=True
+         SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://vincent:xpsviewer*@localhost/pitcher-app'
+        DEBUG=True
 
 config_options = {
  'development':DevConfig,
