@@ -1,15 +1,13 @@
-{% extends 'bootstrap/base.html' %}
-<head>
-
-</head>
-<body>
-    {% block navbar %}
-        {% include 'navbar.html' %}
-    {% endblock %}
-    <div class="container">
-        {% block content %}
+{% extends 'bootstrap/base.html'%}
 
 
-        {% endblock %}
-    </div>
-</body>
+{% block styles%}
+    {{ super() }}
+    <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}
+
+{% block content%}
+
+{% endblock%}
